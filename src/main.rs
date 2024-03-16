@@ -1,15 +1,11 @@
 use clap::Parser;
 use serde::Serialize;
+use std::process;
 
-#[derive(
-    clap::ValueEnum, Clone, Default, Debug, Serialize,
-)]
-enum ColorFormat {
-    #[default]
-    Hex,
-    Rgb,
-    Hsl,
-}
+mod conv;
+mod utils;
+
+use utils::ColorFormat;
 
 #[derive(Parser, Serialize, Debug)]
 struct Args {
@@ -30,5 +26,21 @@ struct Args {
 fn main() {
     let cli = Args::parse();
 
-    println!("{:?}", cli);
+    let colors = cli.out
+        .iter()
+        .map(|f| {
+            let conv = conv::convert(&cli.color, &f);
+            match conv {
+                Ok(co) => (f, co),
+                Err(_) => {
+                    println!("Could not convert {} to {:?}", cli.color, f);
+                    process::exit(1);
+                }
+            }
+        })
+        .collect::<Vec<_>>();
+
+    for color in colors {
+        println!("{:?} {}", color.0, color.1);
+    }
 }

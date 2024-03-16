@@ -8,7 +8,15 @@ mod utils;
 use utils::ColorFormat;
 
 #[derive(Parser, Serialize, Debug)]
+#[clap(
+    name = "ccrs",
+    about = "Color Converter Rust can convert a color into other formats",
+    after_help = "For more information and the source code, visit https://github.com/dlurak/ccrs.",
+    setting(clap::AppSettings::ColoredHelp),
+)]
 struct Args {
+    /// Specify the output color formats. Formats can be duplicates, no formats will result in no
+    /// output
     #[clap(
         short,
         long,
@@ -20,6 +28,8 @@ struct Args {
         ]
     )]
     out: Vec<ColorFormat>,
+
+    /// The input color to convert
     color: String
 }
 

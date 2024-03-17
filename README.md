@@ -31,6 +31,16 @@ $ ccrs [OPTIONS] <COLOR>
 
 ## Installation
 
+### AUR
+
+CCRS is available in the aur:
+
+```bash
+$ yay -S ccrs-bin
+```
+
+### Manual
+
 Clone the code and run this command:
 
 ```bash

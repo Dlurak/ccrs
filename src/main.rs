@@ -12,7 +12,7 @@ use utils::ColorFormat;
     name = "ccrs",
     about = "Color Converter Rust can convert a color into other formats",
     after_help = "For more information and the source code, visit https://github.com/dlurak/ccrs.",
-    setting(clap::AppSettings::ColoredHelp),
+    setting(clap::AppSettings::ColoredHelp)
 )]
 struct Args {
     /// Specify the output color formats. Formats can be duplicates, no formats will result in no
@@ -30,13 +30,14 @@ struct Args {
     out: Vec<ColorFormat>,
 
     /// The input color to convert
-    color: String
+    color: String,
 }
 
 fn main() {
     let cli = Args::parse();
 
-    let colors = cli.out
+    let colors = cli
+        .out
         .iter()
         .map(|f| {
             let conv = conv::convert(&cli.color, &f);

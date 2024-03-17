@@ -1,5 +1,5 @@
-use color_convert::color::Color;
 use crate::utils::ColorFormat;
+use color_convert::color::Color;
 
 pub fn convert(input: &str, format: &ColorFormat) -> Result<String, ()> {
     let input = Color::new(input);
@@ -11,6 +11,6 @@ pub fn convert(input: &str, format: &ColorFormat) -> Result<String, ()> {
 
     match conv {
         Ok(s) => Ok(s),
-        Err(_) => Err(())
+        Err(_) => Err(()),
     }
 }

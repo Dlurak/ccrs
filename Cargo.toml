@@ -2,6 +2,11 @@
 name = "ccrs"
 version = "0.1.0"
 edition = "2021"
+authors = ["dlurak"]
+description = "CCRS allows you to easily convert colors from one format into another"
+homepage = "https://github.com/Dlurak/ccrs"
+repository = "https://github.com/Dlurak/ccrs"
+license = "mit"
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
